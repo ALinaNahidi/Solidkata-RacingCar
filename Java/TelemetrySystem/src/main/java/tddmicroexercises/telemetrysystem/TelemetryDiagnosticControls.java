@@ -1,5 +1,7 @@
 package tddmicroexercises.telemetrysystem;
 
+import tddmicroexercises.telemetrysystem.services.ReceiveService;
+import tddmicroexercises.telemetrysystem.services.SendService;
 import tddmicroexercises.telemetrysystem.services.TelemetryDiagnosticControlsService;
 import tddmicroexercises.telemetrysystem.services.TelemetryService;
 
@@ -40,8 +42,11 @@ public class TelemetryDiagnosticControls implements TelemetryDiagnosticControlsS
             {
                 throw new Exception("Unable to connect.");
             }
-    
-            telemetryClient.send(TelemetryClient.DIAGNOSTIC_MESSAGE);
-            diagnosticInfo = telemetryClient.receive();
+
+            SendService sendService = new SendTelementryImpl();
+            sendService.send(TelemetryClient.DIAGNOSTIC_MESSAGE);
+
+            ReceiveService receiveService = new ReceiveTelementryImpl();
+            diagnosticInfo = receiveService.receive();
     }
 }
