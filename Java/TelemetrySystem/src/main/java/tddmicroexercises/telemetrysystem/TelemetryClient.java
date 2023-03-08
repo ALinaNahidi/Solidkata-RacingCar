@@ -1,10 +1,12 @@
 package tddmicroexercises.telemetrysystem;
 
+import tddmicroexercises.telemetrysystem.services.ReceiveService;
+import tddmicroexercises.telemetrysystem.services.SendService;
 import tddmicroexercises.telemetrysystem.services.TelemetryService;
 
 import java.util.Random;
 
-public class TelemetryClient implements TelemetryService
+public class TelemetryClient implements TelemetryService, SendService, ReceiveService
 {
     public static final String DIAGNOSTIC_MESSAGE = "AT#UD";
 
